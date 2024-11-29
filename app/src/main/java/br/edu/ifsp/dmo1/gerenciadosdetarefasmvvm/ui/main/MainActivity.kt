@@ -68,15 +68,13 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
     }
 
 
-    private fun configClickListener()
-    {
+    private fun configClickListener() {
         binding.buttonAddTask.setOnClickListener{
             openDialogNewTask()
         }
     }
 
-    private fun openDialogNewTask()
-    {
+    private fun openDialogNewTask() {
         val dialogView = layoutInflater.inflate(R.layout.dialog_new_task, null)
         val bindingDialog = DialogNewTaskBinding.bind(dialogView)
 
