@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Gerenciados de Tarefas MVVM</string>
+    <string name="add_new_task">Adicionar nova Tarefa</string>
+    <string name="alter_task_state">Alterar o estado da tarefa</string>
+    <string name="task_updated_success">Tarefa Atualizada com Sucesso</string>
+    <string name="task_inserted_success">Tarefa Inserida com Sucesso</string>
+    <string name="task_inserted_error">Erro ao inserir Tarefa</string>
+    <string name="save">Salvar</string>
+    <string name="cancel">Cancelar</string>
+</resources>
