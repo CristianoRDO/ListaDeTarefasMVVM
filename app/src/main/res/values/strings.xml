@@ -7,4 +7,11 @@
     <string name="task_inserted_error">Erro ao inserir Tarefa</string>
     <string name="save">Salvar</string>
     <string name="cancel">Cancelar</string>
+
+    <string-array name="spinner_options">
+        <item>Exibir Todos</item>
+        <item>Exibir Tarefas Não Concluídas</item>
+        <item>Exibir Tarefas Concluídas</item>
+    </string-array>
+
 </resources>

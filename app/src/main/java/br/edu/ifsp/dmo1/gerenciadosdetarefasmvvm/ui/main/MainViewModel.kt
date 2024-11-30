@@ -21,7 +21,11 @@ class MainViewModel: ViewModel() {
     val updateTask: LiveData<Boolean>
         get() = _updateTask
 
+    private val _filterTask = MutableLiveData<Int>()
+    val filterTask: LiveData<Int> = _filterTask
+
     init{
+        _filterTask.value = 0
         mock()
         load()
     }
@@ -41,7 +45,12 @@ class MainViewModel: ViewModel() {
     }
 
     private fun load() {
-        _tasks.value = dao.getAll()
+        _tasks.value = when(_filterTask.value){
+            0 -> dao.getAll()
+            1 -> dao.getFilterTaskNotCompleted()
+            2 -> dao.getFilterCompleted()
+            else -> dao.getAll()
+        }
     }
 
     private fun mock() {
@@ -50,6 +59,11 @@ class MainViewModel: ViewModel() {
         dao.add(Task("Desligar Computador ao Sair", false))
         dao.add(Task("Arrumar a Cadeira ao Sair", false))
         dao.add(Task("Arrumar as Tomadas ao Sair", false))
+    }
+
+    fun updateFilter(filter: Int){
+        _filterTask.value = filter
+        load()
     }
 
 }

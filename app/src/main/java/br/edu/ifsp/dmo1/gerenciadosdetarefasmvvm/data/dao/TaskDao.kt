@@ -12,6 +12,10 @@ object TaskDao {
 
     fun getAll() = tasks.sortedBy { it.isCompleted }
 
+    fun getFilterCompleted() = tasks.filter { it.isCompleted }
+
+    fun getFilterTaskNotCompleted() = tasks.filter { !it.isCompleted }
+
     fun get(id: Long): Task?{
         return tasks.stream()
             .filter{t -> t.id == id}

@@ -2,6 +2,9 @@ package br.edu.ifsp.dmo1.gerenciadosdetarefasmvvm.ui.main
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +32,8 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
         configListView()
         configClickListener()
         configObservers()
+        setContentSpinner()
+        configSpinner()
     }
 
     override fun clickDone(position: Int){
@@ -67,6 +72,30 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
         })
     }
 
+    private fun setContentSpinner()
+    {
+        val stringArray = resources.getStringArray(R.array.spinner_options)
+        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, stringArray)
+
+        binding.spinnerFilterOptions.adapter = adapter
+    }
+
+    private fun configSpinner(){
+        binding.spinnerFilterOptions.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                viewModel.updateFilter(position)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+
+            }
+        }
+    }
 
     private fun configClickListener() {
         binding.buttonAddTask.setOnClickListener{
@@ -97,5 +126,4 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
         val dialog = builder.create()
         dialog.show()
     }
-
 }
