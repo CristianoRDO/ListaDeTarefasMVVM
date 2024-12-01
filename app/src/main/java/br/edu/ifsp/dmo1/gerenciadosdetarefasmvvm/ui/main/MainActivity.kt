@@ -91,9 +91,7 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
                 viewModel.updateFilter(position)
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
-
-            }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
         }
     }
 
