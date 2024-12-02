@@ -37,17 +37,14 @@ class MainViewModel: ViewModel() {
         load()
     }
 
-    fun updateTask(position: Int) {
-        val task = if(_filterTask.value == 2) { // Permitir atualização correta de uma tarefa quando o filtro estiver aplicado.
-            dao.getAll()[position + dao.getFilterTaskNotCompleted().size] // Somar o position da tarefa concluída com a quantidade de tarefas não concluídas, para gerar o índice correto da tarefa no banco de dados e, atualizá-la corretamente.
-        }
-        else{
-            dao.getAll()[position]
-        }
+    fun updateTask(id: Long) {
+        val task = dao.get(id)
 
-        task.isCompleted = !task.isCompleted
-        _updateTask.value = true
-        load()
+        if(task != null ) {
+            task.isCompleted = !task.isCompleted
+            _updateTask.value = true
+            load()
+        }
     }
 
     private fun load() {

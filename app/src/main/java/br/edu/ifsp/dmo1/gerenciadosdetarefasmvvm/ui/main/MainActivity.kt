@@ -36,8 +36,8 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
         configSpinner()
     }
 
-    override fun clickDone(position: Int){
-        viewModel.updateTask(position)
+    override fun clickDone(id: Long){
+        viewModel.updateTask(id)
     }
 
     private fun configListView(){
